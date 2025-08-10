@@ -1,6 +1,6 @@
-# Login & Registration Backend
+# Login & Registration Backend with MongoDB
 
-A Django REST API backend for user authentication with comprehensive user profile management.
+A Django REST API backend for user authentication with comprehensive user profile management, now using **MongoDB Atlas** as the database.
 
 ## Features
 
@@ -11,6 +11,15 @@ A Django REST API backend for user authentication with comprehensive user profil
 - Password change functionality
 - Email and username availability checking
 - Admin panel for user management
+- **MongoDB Atlas Integration** for cloud data storage
+
+## Database Configuration
+
+This project uses **MongoDB Atlas** as the database:
+- **Database Engine**: djongo (Django-MongoDB connector)
+- **Database Name**: login_reg_db
+- **Connection**: MongoDB Atlas cluster
+- **Compatible Django Version**: 3.2.25
 
 ## User Model Fields
 
@@ -284,9 +293,25 @@ Example error response:
 ## Development Notes
 
 - The API includes CORS headers for frontend integration
-- SQLite database is used by default (change in settings.py for production)
+- **MongoDB Atlas** is used as the cloud database
+- djongo connector bridges Django ORM with MongoDB
 - Token authentication is implemented for API access
 - All passwords are hashed using Django's built-in password hashing
 - Input validation is implemented for all fields
 - Email uniqueness is enforced
 - The custom User model extends Django's AbstractUser
+- Compatible with Django 3.2.25 and djangorestframework 3.12.4
+
+## Testing MongoDB Integration
+
+Run the MongoDB-specific test:
+```bash
+python test_mongodb.py
+```
+
+This will test:
+- User registration with MongoDB storage
+- Login authentication
+- Profile retrieval from MongoDB
+- Profile updates in MongoDB
+- Data persistence verification

@@ -7,17 +7,16 @@ class UserAdmin(BaseUserAdmin):
     # Fields to display in the list view
     list_display = (
         'email', 'username', 'first_name', 'last_name',
-        'university', 'blood_group', 'gender', 'is_active', 'date_joined'
+        'is_active', 'date_joined'
     )
     
     # Fields to filter by
     list_filter = (
-        'is_active', 'is_staff', 'is_superuser', 'gender',
-        'blood_group', 'university', 'date_joined'
+        'is_active', 'is_staff', 'is_superuser', 'date_joined'
     )
     
     # Fields to search by
-    search_fields = ('email', 'username', 'first_name', 'last_name', 'mobile_no')
+    search_fields = ('email', 'username', 'first_name', 'last_name')
     
     # Ordering
     ordering = ('-date_joined',)
@@ -28,13 +27,7 @@ class UserAdmin(BaseUserAdmin):
             'fields': ('username', 'email', 'password')
         }),
         ('Personal Info', {
-            'fields': (
-                'first_name', 'last_name', 'gender', 'date_of_birth',
-                'mobile_no', 'blood_group', 'address'
-            )
-        }),
-        ('Academic Info', {
-            'fields': ('university',)
+            'fields': ('first_name', 'last_name')
         }),
         ('Permissions', {
             'fields': (
@@ -54,13 +47,6 @@ class UserAdmin(BaseUserAdmin):
             'fields': (
                 'username', 'email', 'first_name', 'last_name',
                 'password1', 'password2'
-            ),
-        }),
-        ('Additional Info', {
-            'classes': ('wide',),
-            'fields': (
-                'university', 'blood_group', 'mobile_no',
-                'gender', 'date_of_birth'
             ),
         }),
     )

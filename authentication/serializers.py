@@ -28,9 +28,12 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         validated_data.pop('password_confirm')
         password = validated_data.pop('password')
+        
+        # Create Django User with all fields
         user = User.objects.create_user(**validated_data)
         user.set_password(password)
         user.save()
+        
         return user
 
 class UserLoginSerializer(serializers.Serializer):
@@ -75,12 +78,13 @@ class UserLoginSerializer(serializers.Serializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = (
+        fields = [
             'id', 'username', 'email', 'first_name', 'last_name',
             'university', 'blood_group', 'mobile_no', 'gender',
-            'date_of_birth', 'address', 'date_joined', 'last_login'
-        )
-        read_only_fields = ('id', 'date_joined', 'last_login')
+            'date_of_birth', 'address', 'date_joined', 'last_login',
+            'created_at', 'updated_at'
+        ]
+        read_only_fields = ['id', 'username', 'email', 'date_joined', 'last_login', 'created_at', 'updated_at']
 
 class ChangePasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField(write_only=True)

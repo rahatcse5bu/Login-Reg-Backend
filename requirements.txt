@@ -1,4 +1,12 @@
-Django==5.2.5
-djangorestframework==3.15.2
+Django==3.2.25
+djangorestframework==3.12.4
+django-cors-headers==3.13.0
+mysqlclient==2.2.4
+python-dotenv==1.0.1ngo==3.2.25
+djangorestframework==3.12.4
 django-cors-headers==4.4.0
 requests==2.32.3
+mongoengine==0.28.2
+django-mongoengine==0.5.6
+pymongo==4.8.0
+dnspython==2.6.1
